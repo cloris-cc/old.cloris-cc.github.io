@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>RocketMQ和RabbitMQ的区别 - 茶茶日记 - winklog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="茶茶日记 - winklog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="茶茶日记 - winklog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="虽然都使用过这两种消息队列，不过还是写个简单的summary吧。"><meta property="og:type" content="blog"><meta property="og:title" content="RocketMQ和RabbitMQ的区别"><meta property="og:url" content="https://teamwang.cn/2021/04/02/RocketMQ%E5%92%8CRabbitMQ%E7%9A%84%E5%8C%BA%E5%88%AB/"><meta property="og:site_name" content="茶茶日记 - winklog"><meta property="og:description" content="虽然都使用过这两种消息队列，不过还是写个简单的summary吧。"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://teamwang.cn/img/og_image.png"><meta property="article:published_time" content="2021-04-02T11:04:48.000Z"><meta property="article:modified_time" content="2021-04-10T13:03:51.112Z"><meta property="article:author" content="Jacky"><meta property="article:tag" content="茶茶,日记,茶茶日记,winklog,WinkLog,博客,teamwang,TeamWang,王嘉尔,Jakcy,jacky"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamwang.cn/2021/04/02/RocketMQ%E5%92%8CRabbitMQ%E7%9A%84%E5%8C%BA%E5%88%AB/"},"headline":"RocketMQ和RabbitMQ的区别","image":["https://teamwang.cn/img/og_image.png"],"datePublished":"2021-04-02T11:04:48.000Z","dateModified":"2021-04-10T13:03:51.112Z","author":{"@type":"Person","name":"Jacky"},"description":"虽然都使用过这两种消息队列，不过还是写个简单的summary吧。"}</script><link rel="canonical" href="https://teamwang.cn/2021/04/02/RocketMQ%E5%92%8CRabbitMQ%E7%9A%84%E5%8C%BA%E5%88%AB/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?05af3f3bd18ffe652b63cc7ee6abb48c";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="茶茶日记 - winklog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">AboutMe</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-04-02T11:04:48.000Z" title="4/2/2021, 7:04:48 PM">2021-04-02</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-04-10T13:03:51.112Z" title="4/10/2021, 9:03:51 PM">2021-04-10</time></span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a><span> / </span><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Spring-Cloud/">Spring Cloud</a></span><span class="level-item">4 minutes read (About 546 words)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>&nbsp;visits</span></div></div><h1 class="title is-3 is-size-4-mobile">RocketMQ和RabbitMQ的区别</h1><div class="content"><p>虽然都使用过这两种消息队列，不过还是写个简单的summary吧。</p>
+<span id="more"></span>
+
+<p>概览：两者均开源，由于rabbitmq更早开源以及纳入SpringCloud体系，故用户量更多(docker-hub更为明显，但是rocketmq在github上更受欢迎)。rocketmq优势主要体现在<strong>性能</strong>。</p>
+<p>这里是一个从网上看到的性能对比，所以仅供参考：Kafka吞吐量17.3w/s，rocketmq吞吐量11.6w/s，rabbitmq吞吐量5.95w/s。</p>
+<p>业务功能：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>RocketMQ</th>
+<th>RabbitMQ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>顺序消息</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>全链路消息轨迹</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>消息堆积能力</td>
+<td>不影响性能</td>
+<td>影响性能</td>
+</tr>
+<tr>
+<td>消息回溯</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+</tbody></table>
+<p>其它一些功能细节差异：</p>
+<p>失败重试：rabbitmq默认失败一直重试，可设置重试次数和重试间隔，而rocketmq默认重试2次，间隔根据messageDelayLevel递增。</p>
+<p>两者达到重试次数上限，均会自动ack消息，再把消息投递到死信队列DLQ(deadline queue)(rabbitmq不会自动到DLQ)。rocketmq保存DLQ的消息3天，因为所有消息3天不消费均会被删除。</p>
+<p>通常建议当重试次数达到上限后，(Consumer端)回滚事务并保存错误日志(尽量不要使用<strong>手动ack</strong>消息)。若是因为消息发送失败而触发重试，则要根据SendResult的SendState状态来做处理。其中，rocketmq可通过MessageExt获取重试次数，而rabbitmq需要自行实现（如使用redis，消息的主键如orderId/messageId做key，消费次数做val）。</p>
+<p>另外，要注意如果在消息消费使用了try/catch或全局异常处理异常，会导致rocketmq获取不到异常导致触发不了重试机制。</p>
+<p>最后，相较Kafka这两款消息组件虽然性能不及它，但由于是<strong>面向具体业务</strong>而生的(Kafka<strong>面向数据/日志</strong>)，所以不管是<strong>消息可靠性</strong>上还是<strong>功能</strong>上更具优势。</p>
+<p>一些概念上的对应关系：</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>RocketMQ和RabbitMQ的区别</p><p><a href="https://teamwang.cn/2021/04/02/RocketMQ和RabbitMQ的区别/">https://teamwang.cn/2021/04/02/RocketMQ和RabbitMQ的区别/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Jacky</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-04-02</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2021-04-10</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=60364d8c1dae0d00189a79e8&amp;product=inline-share-buttons" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/04/09/RabbitMQ-Adv/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">RabbitMQ Adv</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/04/02/Redis6-0%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B/"><span class="level-item">Redis6.0之多线程</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            appId: "D7nrmJ3xSHla6mxR3p0BrXqD-gzGzoHsz",
+            appKey: "rGXO6glIn8ETvzytN7maFaoP",
+            placeholder: "Leave your comments~",
+            
+            
+            meta: ["nick"],
+            pageSize: 10,
+            lang: "en",
+            visitor: true,
+            highlight: true,
+            
+            
+            
+            
+            enableQQ: true,
+            requiredFields: [],
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><!--!--><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Jacky"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Jacky</p><p class="is-size-6 is-block">(ง ˙o˙)ว</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">23</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">10</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tag</p><a href="/tags"><p class="title">1</p></a></div></div></nav><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Weibo" href="https://weibo.com/"><i class="fab fa-weibo"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/cloris-cc"><i class="fab fa-github"></i></a></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><p class="is-size-7"><span>&copy; 2021 Jacky</span>  <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备19098392号</a><br><span id="busuanzi_container_site_uv">Visited by <span id="busuanzi_value_site_uv">0</span> users</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Weibo" href="https://weibo.com/"><i class="fab fa-weibo"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/cloris-cc"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
