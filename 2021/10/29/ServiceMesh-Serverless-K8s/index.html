@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>ServiceMesh, Serverless, K8s - 茶茶日记 - winklog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="茶茶日记 - winklog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="茶茶日记 - winklog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="关于ServiceMesh, Serverless, K8的概念与联系。"><meta property="og:type" content="blog"><meta property="og:title" content="ServiceMesh, Serverless, K8s"><meta property="og:url" content="https://teamwang.cn/2021/10/29/ServiceMesh-Serverless-K8s/"><meta property="og:site_name" content="茶茶日记 - winklog"><meta property="og:description" content="关于ServiceMesh, Serverless, K8的概念与联系。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/IPCE3e.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/lQKQoX.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/hG7z0b.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/image-20211029224027366.png"><meta property="article:published_time" content="2021-10-29T15:05:52.000Z"><meta property="article:modified_time" content="2021-10-29T15:07:13.324Z"><meta property="article:author" content="Jacky"><meta property="article:tag" content="茶茶,日记,茶茶日记,winklog,WinkLog,博客,teamwang,TeamWang,王嘉尔,Jakcy,jacky"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/IPCE3e.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamwang.cn/2021/10/29/ServiceMesh-Serverless-K8s/"},"headline":"ServiceMesh, Serverless, K8s","image":["https://gitee.com/jacky_cloud/oss/raw/master/uPic/IPCE3e.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/lQKQoX.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/hG7z0b.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/image-20211029224027366.png"],"datePublished":"2021-10-29T15:05:52.000Z","dateModified":"2021-10-29T15:07:13.324Z","author":{"@type":"Person","name":"Jacky"},"description":"关于ServiceMesh, Serverless, K8的概念与联系。"}</script><link rel="canonical" href="https://teamwang.cn/2021/10/29/ServiceMesh-Serverless-K8s/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?05af3f3bd18ffe652b63cc7ee6abb48c";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="茶茶日记 - winklog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时光轴</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-10-29T15:05:52.000Z" title="10/29/2021, 11:05:52 PM">2021-10-29</time>发表</span><span class="level-item"><time dateTime="2021-10-29T15:07:13.324Z" title="10/29/2021, 11:07:13 PM">2021-10-29</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Docker/">Docker</a></span><span class="level-item">9 分钟读完 (大约1304个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">ServiceMesh, Serverless, K8s</h1><div class="content"><p>关于ServiceMesh, Serverless, K8的概念与联系。</p>
+<span id="more"></span>
+
+<h2 id="ServiceMesh"><a href="#ServiceMesh" class="headerlink" title="ServiceMesh"></a>ServiceMesh</h2><p>微服务存在的问题：</p>
+<ol>
+<li>框架底层实现复杂(分布式系统的通信协议)</li>
+<li>框架没有多语言支持</li>
+<li>版本兼容问题，可能依赖库升级，系统也要升级。</li>
+</ol>
+<p>ServiceMesh，服务网格：</p>
+<blockquote>
+<p>服务网格是一个<strong>基础设施层</strong>，用于处理服务间通信。云原生应用有着复杂的服务拓扑，服务网格保证请求在这些拓扑中可靠地穿梭。在实际应用当中，服务网格通常是由一系列轻量级的<strong>网络代理</strong>组成的，它们与应用程序部署在一起，但对应用程序透明。</p>
+<p>网格 = sidecar = 网络代理</p>
+</blockquote>
+<p>它将<strong>分布式服务的通信</strong>抽象为单独一层，在这一层中实现负载均衡、服务发现、认证授权、监控追踪、流量控制等分布式系统所需要的功能，作为一个和服务对等的<strong>代理服务</strong>，和服务部署在一起，接管服务的流量，通过代理之间的通信间接完成服务之间的通信请求，这样上边所说的三个问题也迎刃而解。（抽象化微服务通用组件的<strong>通信功能</strong>）</p>
+<p>因此说，<strong>Service Mesh 是微服务时代的 TCP/IP 协议。</strong></p>
+<p><img src="https://gitee.com/jacky_cloud/oss/raw/master/uPic/IPCE3e.png" alt="IPCE3e"></p>
+<p>如果我们暂时略去服务，只看Service Mesh的单机组件组成的网络：</p>
+<p><img src="https://gitee.com/jacky_cloud/oss/raw/master/uPic/lQKQoX.png" alt="lQKQoX"></p>
+<p>第二代 Service Mesh，增加了管理各个 sidecar 网格的控制面板：</p>
+<p><img src="https://gitee.com/jacky_cloud/oss/raw/master/uPic/hG7z0b.png" alt="hG7z0b"></p>
+<p>总结一下，Service Mesh具有如下优点：</p>
+<ul>
+<li>屏蔽分布式系统通信的复杂性(负载均衡、服务发现、认证授权、监控追踪、流量控制等等)，服务只用关注业务逻辑；</li>
+<li>真正的语言无关，服务可以用任何语言编写，只需和Service Mesh通信即可；</li>
+<li>对应用透明，Service Mesh组件可以单独升级；</li>
+</ul>
+<p>当然，Service Mesh目前也面临一些挑战：</p>
+<ul>
+<li>Service Mesh组件以代理模式计算并转发请求，一定程度上会降低通信系统性能，并增加系统资源开销；</li>
+<li>Service Mesh组件接管了网络流量，因此服务的整体稳定性依赖于Service Mesh，同时额外引入的大量Service Mesh服务实例的运维和管理也是一个挑战；</li>
+</ul>
+<p>历史总是惊人的相似。为了解决端到端的字节码通信问题，TCP协议诞生，让多机通信变得简单可靠；微服务时代，Service Mesh应运而生，屏蔽了分布式系统的诸多复杂性，让开发者可以回归业务，聚焦真正的价值。</p>
+<h2 id="Serverless"><a href="#Serverless" class="headerlink" title="Serverless"></a>Serverless</h2><p>无服务器计算是一种<strong>按需提供后端服务</strong>的方法。无服务器提供程序允许用户编写和部署代码，而不必担心底层基础结构。从无服务器供应商处获得后端服务的公司将根据其计算费用，而不必保留和支付固定数量的带宽或服务器数量，因为该服务是<strong>自动扩展</strong>的。</p>
+<p>也就是说，不用你处理服务器上的部署、运维、服务器容量和服务器的扩展和失败容错，还有服务器上选择什么OS操作系统，语言的更新，日志等等问题。请注意，尽管称为无服务器，但仍使用物理服务器，但开发人员无需了解它们。</p>
+<p>当前业界最常见的 Serverless 实现方案为 FaaS（Function as a Service, 函数即服务） + BaaS（Backend as a Service, 后端即服务），我们经常听到的「云服务」就是基于 FaaS + BaaS 架构。</p>
+<p><img src="https://gitee.com/jacky_cloud/oss/raw/master/uPic/image-20211029224027366.png" alt="image-20211029224027366"></p>
+<h2 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h2><p>Rancher有分为v1和v2版本，都是提供容器调度与编排，不同之处在于在k8s盛行之前有许多人都搞过容器编排，所以rancher v1上会有几种不同的编排模式，例如cattle ,swarm,kubernetes。从这里可以看出Rahcner v1时代，它给自己的定位是各种编排工具的上层，也就是k8s的上层，然后你再通过它去管理k8s。</p>
+<p>因为k8s后来发展得势不可挡，所以Rancher v2应运而生，移除了其他类型的编排工具，只剩下k8s。</p>
+<p>所以总结一下，两者的关系是Rancher对k8s进行了功能的拓展与实现了和k8s集群交互的一些便捷工具，包括执行命令行，管理多个 k8s集群，查看k8s集群节点的运行状态等等。</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>ServiceMesh, Serverless, K8s</p><p><a href="https://teamwang.cn/2021/10/29/ServiceMesh-Serverless-K8s/">https://teamwang.cn/2021/10/29/ServiceMesh-Serverless-K8s/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Jacky</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-10-29</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-10-29</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/10/29/docker/"><span class="level-item">docker</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            appId: "D7nrmJ3xSHla6mxR3p0BrXqD-gzGzoHsz",
+            appKey: "rGXO6glIn8ETvzytN7maFaoP",
+            placeholder: "Leave your comments~",
+            
+            
+            meta: ["nick"],
+            pageSize: 10,
+            lang: "en",
+            visitor: true,
+            highlight: true,
+            
+            
+            
+            
+            enableQQ: true,
+            requiredFields: [],
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#ServiceMesh"><span class="level-left"><span class="level-item">ServiceMesh</span></span></a></li><li><a class="level is-mobile" href="#Serverless"><span class="level-left"><span class="level-item">Serverless</span></span></a></li><li><a class="level is-mobile" href="#Kubernetes"><span class="level-left"><span class="level-item">Kubernetes</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Jacky"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Jacky</p><p class="is-size-6 is-block">(ง ˙o˙)ว</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">29</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">7</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">1</p></a></div></div></nav><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Weibo" href="https://weibo.com/"><i class="fab fa-weibo"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/cloris-cc"><i class="fab fa-github"></i></a></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><p class="is-size-7"><span>&copy; 2021 Jacky</span>  <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备19098392号</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Weibo" href="https://weibo.com/"><i class="fab fa-weibo"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/cloris-cc"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
