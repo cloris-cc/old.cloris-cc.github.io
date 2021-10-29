@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>java开发手册 - 茶茶日记 - winklog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="茶茶日记 - winklog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="茶茶日记 - winklog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="…"><meta property="og:type" content="blog"><meta property="og:title" content="java开发手册"><meta property="og:url" content="https://teamwang.cn/2021/10/23/java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/"><meta property="og:site_name" content="茶茶日记 - winklog"><meta property="og:description" content="…"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://teamwang.cn/img/og_image.png"><meta property="article:published_time" content="2021-10-23T09:49:37.000Z"><meta property="article:modified_time" content="2021-10-29T08:12:20.683Z"><meta property="article:author" content="Jacky"><meta property="article:tag" content="茶茶,日记,茶茶日记,winklog,WinkLog,博客,teamwang,TeamWang,王嘉尔,Jakcy,jacky"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamwang.cn/2021/10/23/java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/"},"headline":"java开发手册","image":["https://teamwang.cn/img/og_image.png"],"datePublished":"2021-10-23T09:49:37.000Z","dateModified":"2021-10-29T08:12:20.683Z","author":{"@type":"Person","name":"Jacky"},"description":"…"}</script><link rel="canonical" href="https://teamwang.cn/2021/10/23/java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?05af3f3bd18ffe652b63cc7ee6abb48c";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="茶茶日记 - winklog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时光轴</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-10-23T09:49:37.000Z" title="10/23/2021, 5:49:37 PM">2021-10-23</time>发表</span><span class="level-item"><time dateTime="2021-10-29T08:12:20.683Z" title="10/29/2021, 4:12:20 PM">2021-10-29</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a></span><span class="level-item">24 分钟读完 (大约3617个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">java开发手册</h1><div class="content"><p>…</p>
+<span id="more"></span>
+
+<h1 id="第-1-章-编程规约"><a href="#第-1-章-编程规约" class="headerlink" title="第 1 章 编程规约"></a>第 1 章 编程规约</h1><h2 id="1-1-命名风格"><a href="#1-1-命名风格" class="headerlink" title="1.1 命名风格"></a>1.1 命名风格</h2><ol>
+<li><p>POJO 中的 Boolean 变量都不要加 is 前缀，否则部分框架（如 RPC）解析会引起序列化错误。</p>
+<blockquote>
+<p>反例：如 Boolean isDeleted RPC 框架反向解析的时候，会识别为 deleted，导致属性获取不到抛出异常。</p>
+</blockquote>
+</li>
+<li><p>接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码简洁，并加上有效的 Javadoc 注释。尽量不要在接口中定义变量，除非是常量。</p>
+<blockquote>
+<p>正例：方法签名：<code>void commit()</code> 基础常量：<code>String COMPANY = &quot;alibaba&quot;</code></p>
+</blockquote>
+</li>
+<li><p>枚举类名建议带上 Enum 后缀，枚举成员名称需要全大写，单词间用下划线隔开。</p>
+<blockquote>
+<p>说明：枚举其实就是特殊的常量类，且构造方法被默认强制为私有。<br>正例：枚举类名为 ProcessStatusEnum，成员名称有 SUCCESS / UNKNOW_REASON</p>
+</blockquote>
+</li>
+<li><p>各层命名规约：</p>
+<p>1). Service / DAO 层 method 命名规约：</p>
+<blockquote>
+<p>a. 获取单个对象的方法用 get 作为前缀<br>b. 获取多个对象的方法用 list 作为前缀<br>c. 插入的方法用 save / insert 作为前缀<br>d. 删除的方法用 remove / delete 作为前缀<br>e. 修改的方法用 update 作为前缀<br>f. 获取统计值的方法用 count 作为前缀</p>
+</blockquote>
+<p> 2). 领域模型命名规约：</p>
+<blockquote>
+<p>a. 数据对象：xxxDO，xxx 为数据库表名。<br>b. 数据传输对象：xxxDTO，xxx 为业务领域相关的名称。<br>c. 展示对象：xxxVO，xxx 一般为网页名称。<br>d. POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="1-2-常量定义"><a href="#1-2-常量定义" class="headerlink" title="1.2 常量定义"></a>1.2 常量定义</h2><ol>
+<li><p>不允许任何魔法值（即未经预先定义的常量）直接出现在代码中。</p>
+<blockquote>
+<p>反例：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String key = &quot;Id#taobao_&quot; + tradeId; # &quot;Id#taobao&quot; 应该定义为常量。</span><br><span class="line"><span class="keyword">catch</span>.put(key, value);</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>如果变量值仅在一个范围内变化，则用 enum 类型来定义。</p>
+<blockquote>
+<p>正例：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pubilc <span class="class"><span class="keyword">enum</span> <span class="title">SeasonEnum</span> </span>&#123;</span><br><span class="line">    SPRING(<span class="number">1</span>), SUMMER(<span class="number">2</span>), AUTUMN(<span class="number">3</span>), WINTER(<span class="number">4</span>);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> seq;</span><br><span class="line">    SeasonEnum(<span class="keyword">int</span> seq) &#123;</span><br><span class="line">    <span class="keyword">this</span>.seq = seq;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+<h2 id="1-3-代码格式"><a href="#1-3-代码格式" class="headerlink" title="1.3 代码格式"></a>1.3 代码格式</h2><ol>
+<li>一行代码的大括号不换行。</li>
+</ol>
+<h2 id="1-4-OOP-规约"><a href="#1-4-OOP-规约" class="headerlink" title="1.4 OOP 规约"></a>1.4 OOP 规约</h2><ol>
+<li><p>Object 的 equals 方法容易抛空指针异常，应使用常量或有值的对象来调用 equals。</p>
+<blockquote>
+<p>正例：<code>&quot;test&quot;.equals(object);</code><br>反例：<code>object.equals(&quot;test&quot;);</code></p>
+</blockquote>
+</li>
+<li><p>所有<strong>相同类型</strong>的包装类对象之间 value 的比较，全部使用 equals 方法。但是要注意 Integer var = ？在 -128 ~ 127 范围内的赋值是同一个对象（取自 IntegerCache.cache ），所以可以直接使用 == 进行判断。但是推荐使用 equals 方法。</p>
+</li>
+<li><p>所有 POJO 的属性必须使用<strong>包装数据类型</strong>。POJO 类属性没有初始值，是要提醒使用者在需要使用时，必须自己显式地赋值，任何 NPE 问题，或者入库检查，都由使用者来保证。</p>
+<blockquote>
+<p>正例：数据库的查询结果可能是 null，因为自动拆箱，所以用基本数据类型接收都有 NPE 风险。</p>
+</blockquote>
+</li>
+<li><p>POJO 必须写 toString 方法。</p>
+</li>
+<li><p>在循环体内，字符串的连接方式使用 StringBuilder 的 append 方法。用 String 拼接会产生很多个新的对象，造成内存资源浪费。</p>
+</li>
+<li><p>工具类不允许有 public 或 defaul 构造方法。因为工具类一般只需要一个对象，写 method 指定为 static 即可。</p>
+</li>
+</ol>
+<h2 id="1-5-集合处理"><a href="#1-5-集合处理" class="headerlink" title="1.5 集合处理"></a>1.5 集合处理</h2><ol>
+<li><p>在使用工具类 Arrays.asList() 把数组转换成集合后，不能使用修改集合相关的方法，如 add / remove / clear 的集合方法，否则会抛出 UnsupportOperationException 异常。因为 asList 的返回对象是一个 Arrays 内部类，并没有实现集合的修改方法。Arrays.asList 体现的是<strong>适配器模式</strong>，只是转换接口，后台的数据实际上还是数组。</p>
+</li>
+<li><p>不要再 foreach 循环里进行元素的 remove / add 操作。remove 元素使用 Iterator 方式，如果是并发操作，需要对 Iterator 对象加锁。</p>
+<blockquote>
+<p>正例：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;String&gt; iterator = list.iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">    String item = iterator.next();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>在集合初始化时，推荐指定集合初始值大小。HashMap 使用 HashMap(itn initialCapacity) 初始化。</p>
+<blockquote>
+<p>正例：initialCapacity = （元素个数 / 负载因子）+ 1。其中负载因子 <strong>load factor 默认为 0.75</strong>。如果暂时无法确定初始值大小，就设置为 16（即默认值）。<br>反例：HashMap 需要放置 1024 个元素，由于没有设置容量初始大小，随着元素的不断增加，容量被<strong>扩大 7 次</strong>，resize 需要重建 hash 表，这会严重影响性能。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="1-6-并发处理"><a href="#1-6-并发处理" class="headerlink" title="1.6 并发处理"></a>1.6 并发处理</h2><ol>
+<li><p>获取单例对象需要保证线程安全，其中的方法也要保证线程安全。资源驱动类、<strong>工具类</strong>、单例工厂类都需要注意。</p>
+</li>
+<li><p>线程资源必须通过线程池提供，不允许在应用中自行显示创建线程。</p>
+</li>
+<li><p>线程池不允许使用 Executors 创建，而是通过 ThreadPoolExecutor 的方式创建，这样的处理方式能让编写代码的工程师更加明确线程池的运行规则，规避资源耗尽的风险。</p>
+<blockquote>
+<p>说明：Executors 返回的线程池对象的弊端如下：<br>1）FixedThreadPool 和 SingleThreadPool：<br>允许的请求队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM。<br>2）CachedThreadPool 和 ScheduledThreadPool：<br>允许的创建线程数量为 Integer.MAX_VALUE，可能会创建大量的线程，从而导致 OOM。</p>
+</blockquote>
+</li>
+<li><p>在并发修改同一记录时，为避免更新丢失需要加锁。要么在应用层加锁，要么在缓存层加锁，要么在数据库层使用乐观锁，使用 version 作为更新依据。</p>
+<blockquote>
+<p>如果每次访问冲突概率小于 20%，推荐使用乐观锁，否则使用悲观锁。乐观锁的重试次数要大于 3 次。</p>
+</blockquote>
+</li>
+<li><p>HashMap 在容量不够进行 resize 时，由于高并发可能出现死锁，导致 CPU 占用飙升，在开发过程中可以使用其他数据结构或加锁来规避此风险。</p>
+</li>
+<li><p>ThreadLocal 无法解决共享对象的更新问题， ThreadLocal 对象建议使用 static 修饰。</p>
+</li>
+</ol>
+<h2 id="1-7-控制语句"><a href="#1-7-控制语句" class="headerlink" title="1.7 控制语句"></a>1.7 控制语句</h2><ol>
+<li><p>在高并发场景中，避免使用 “==” 判断作为中断或退出的条件（if 语句不可信，== 条件不可取）。</p>
+<blockquote>
+<p>说明：如果并发控制没有处理好，容易产生等值判断被“击穿”的情况，应使用<strong>大于或小于</strong>的区间<strong>判断条件</strong>来代替。<br>反例：判断库存等于 0 时，停止出售。但可能因为并发问题导致库存数量小于 0 而无法停止出售。</p>
+</blockquote>
+</li>
+<li><p>在表达异常的分支时，尽量少用 if-else。可以改写成多个 if 语句。</p>
+</li>
+<li><p>不要在 if 条件语句中执行其它复杂的语句。可以将复杂的逻辑判断结果赋值给一个 boolean 变量（<strong>局部变量使用基本数据类型</strong>）。</p>
+</li>
+</ol>
+<h2 id="1-8-注释规约"><a href="#1-8-注释规约" class="headerlink" title="1.8 注释规约"></a>1.8 注释规约</h2><ol>
+<li><p>所有的类都必须加上作者和创建日期。</p>
+</li>
+<li><p>所有的枚举类型字段必须要有注释，说明每个数据项的用途。</p>
+</li>
+</ol>
+<h2 id="1-9-其他"><a href="#1-9-其他" class="headerlink" title="1.9 其他"></a>1.9 其他</h2><ol>
+<li><p>任何数据结构的构造或初始化，都应指定大小，避免因数据结构无限增长而内存。</p>
+</li>
+<li><p>及时清理不再使用的代码段或配置信息。</p>
+<blockquote>
+<p>说明：对于暂时注释后续可能使用的代码，在代码三方用 “///“ 来说明注释掉代码的理由。</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="第-2-章-异常处理"><a href="#第-2-章-异常处理" class="headerlink" title="第 2 章 异常处理"></a>第 2 章 异常处理</h1><h2 id="2-1-异常处理"><a href="#2-1-异常处理" class="headerlink" title="2.1 异常处理"></a>2.1 异常处理</h2><ol>
+<li><p>Java 类库中定义的可以通过预检查方式规避的 RuntimeException 不应该用 catch 或 throws 的方式来处理。如：IndexOutOfBoundsException，NullPointerException 等。</p>
+<blockquote>
+<p>正例：if (obj != null) { … }<br>反例：try { obj.method() } catch (NullPointerException e) { … }</p>
+</blockquote>
+</li>
+<li><p><strong>异常不要用来做流程控制、条件控制。</strong></p>
+<blockquote>
+<p>说明：异常设计的初衷是解决程序运行分钟的各种意外情况，况且异常的处理效率比条件判断的方式要低很多。</p>
+</blockquote>
+</li>
+<li><p><strong>防止 NPE，是程序员的基本修养，注意产生 NPE 的场景。</strong></p>
+<blockquote>
+<p>1）当返回类型为<strong>基本数据类型</strong>， return 是一个包装数据类型的对象时，自动拆箱有可能产生 NPE。（equals 的值判断也会自动拆箱）<br>反例：public int add() {return Integer 对象}，如果对象为 null，自动拆箱就会产生 NPE。<strong>即 int i = null; 会报异常。</strong><br>2）数据库的查询返回结果（Object）可能为 null。<br>3）集合里的元素即使 isNotEmpty，但取出的元素也可能为 null。<br>4）远程调用返回对象时，一律要求进行空指针判断，以防止 NPE。<br>5）对于 Session 中获取的数据，建议进行 NPE 检查，以避免空指针。</p>
+</blockquote>
+</li>
+<li><p>避免出现重复的代码。Don’t repeat yourself.</p>
+</li>
+</ol>
+<h2 id="2-2-日志规约"><a href="#2-2-日志规约" class="headerlink" title="2.2 日志规约"></a>2.2 日志规约</h2><ol>
+<li><p>应用中的扩展日志（如打点、临时监控、访问日志等）命名方式：appName_logType_logName.log。logType 有 stats/monitor/visit 等。</p>
+<blockquote>
+<p>正例：在 mppserver 应用中单独监控时区转换异常，如 mppserver_monitor_timZoneConvert.log</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="第-3-章-单元测试"><a href="#第-3-章-单元测试" class="headerlink" title="第 3 章 单元测试"></a>第 3 章 单元测试</h1><ol>
+<li><p>好的单元测试必须遵循 AIR 原则。即 Automatic,Independent and Repeatable.</p>
+<blockquote>
+<p>Automatic：自动执行。单元测试不准使用 System.out 进行人肉验证，不许使用 assert 验证。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> MyTest &#123;</span><br><span class="line">    <span class="meta">@Rule</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> SystemOutRule systemOutRule = <span class="keyword">new</span> SystemOutRule().enableLog();</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">overrideProperty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.print(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">        assertEquals(<span class="string">&quot;hello world&quot;</span>, systemOutRule.getLog());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>…</p>
+</blockquote>
+</li>
+<li><p>单元测试应遵循 BCDE 原则。即 Border,Correct,Design and Error.</p>
+</li>
+<li><p>一般单元测试不要修改数据库的数据，自己 mock 数据测试。和数据库相关的单元测试，可以设置自动回滚机制，不给数据库造成脏数据。或者对单元测试产生的数据设立明确的 prefix or suffix。</p>
+</li>
+</ol>
+<h1 id="第-4-章-安全规约"><a href="#第-4-章-安全规约" class="headerlink" title="第 4 章 安全规约"></a>第 4 章 安全规约</h1><h1 id="第-5-章-MySQL-数据库"><a href="#第-5-章-MySQL-数据库" class="headerlink" title="第 5 章 MySQL 数据库"></a>第 5 章 MySQL 数据库</h1><h2 id="5-1-建表规约"><a href="#5-1-建表规约" class="headerlink" title="5.1 建表规约"></a>5.1 建表规约</h2><ol>
+<li><p>表达“是否”的字段，必须使用 is_xxx 的方式命名，且<strong>数据类型</strong>是 unsigned tinyint（1 表示 true，0 表示 false）。如果数据类型是 Boolean 则 POJO 对象被 RPC 调用会由于 is_xxx 属性解析错误产生问题。</p>
+</li>
+<li><p>表名不使用复数。DO 也一样。</p>
+</li>
+<li><p>小数类型为 decimal，禁止使用 float 和 double。</p>
+</li>
+<li><p>如果存储的字符串长度固定（或者几乎一样）（手机号、邮箱等等），则应使用 char 定长字符串。（节约空间）</p>
+</li>
+<li><p>任何表都应该有的 3 个字段：id，gmt_create &lt; datetime type &gt;， gmt_modified.</p>
+</li>
+<li><p>单表超过 500 万行或者容量超过 2 GB 时，才推荐进行分表分库。如果预计三年后的数据量无法达到这个级别，就不要在创建表时就分库分表。</p>
+</li>
+<li><p>设置合适的字符存储长度（包括 unsigned），不但可以节约空间，更重要的是能提高检索速度。</p>
+</li>
+</ol>
+<h2 id="5-2-索引规约"><a href="#5-2-索引规约" class="headerlink" title="5.2 索引规约"></a>5.2 索引规约</h2><ol>
+<li><p>业务上具有唯一特性的字段，即使是多个字段的组合，也必须建成唯一索引。</p>
+</li>
+<li><p>页面搜索禁止使用左模糊或者全模糊搜索，若需要则通过搜索引擎解决。因为索引未见具有 <strong>B-Tree</strong> 的最左前缀匹配特性，如果<strong>左边的值未确定，那么就无法使用索引</strong>了。</p>
+</li>
+<li><p>注意 order by 的场景。</p>
+<blockquote>
+<p>正例：where a = ? and b = ? order by c = ?; 索引是 a_b_c<br>反例：索引中有范围查找，那么索引有序性无法利用，如 where a &gt; 10 order by b; 索引 a_b 无法排序。</p>
+</blockquote>
+</li>
+<li><p>利用延迟关联或子查询优化超多分页场景。</p>
+<blockquote>
+<p>说明：MySQL 并不是跳过 offset 行，而是取 offset + N 行（全部），然后放弃前 offset 行，返回 N 行。所以当 offset 特别大的时候效率就会非常低。要么控制返回的总页数，要么对特定超过阈值的页数进行 SQL 改写。<br>正例：先快速定位需要获取的 id 段，然后再关联：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.字段 <span class="keyword">from</span> 表 <span class="number">1</span> a, (<span class="keyword">select</span> id <span class="keyword">from</span> 表 <span class="number">1</span> <span class="keyword">where</span> 条件 limit <span class="number">100000</span>, <span class="number">20</span>) b <span class="keyword">where</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>建组合索引时，区分度最高的在最左边。</p>
+<blockquote>
+<p>正例：如 where a = ? and b = ? 语句，其中 a 几乎接近唯一值，那么只需要单建 idx_a 索引即可。对 where a &gt; ? and b = ? 语句，b 的区分度更高。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="5-3-SQL-语句"><a href="#5-3-SQL-语句" class="headerlink" title="5.3 SQL 语句"></a>5.3 SQL 语句</h2><ol>
+<li><p>count(*) 统计所有，count(列名) 只统计该列不为 null 的行数。</p>
+</li>
+<li><p>在代码中写分页查询逻辑时，若 count 为 0 则应该直接返回，避免执行后面的分页语句。</p>
+</li>
+</ol>
+<h2 id="5-4-ORM-映射"><a href="#5-4-ORM-映射" class="headerlink" title="5.4 ORM 映射"></a>5.4 ORM 映射</h2><ol>
+<li><p>POJO 中的 Boolean 属性命名不能加 is 前缀，而数据库必须加 is_，要求在 resultMap 中进行字段与属性的映射。</p>
+</li>
+<li><p>SQL 相关的参数使用：#{}，用 ${} 的话容易出现 SQL 注入。</p>
+</li>
+<li><p>更新时也要同时更新 gmt_modified 字段。</p>
+</li>
+</ol>
+<h1 id="第-6-章-工程结构"><a href="#第-6-章-工程结构" class="headerlink" title="第 6 章 工程结构"></a>第 6 章 工程结构</h1><h2 id="6-1-应用分层"><a href="#6-1-应用分层" class="headerlink" title="6.1 应用分层"></a>6.1 应用分层</h2><h2 id="6-2-二方库依赖"><a href="#6-2-二方库依赖" class="headerlink" title="6.2 二方库依赖"></a>6.2 二方库依赖</h2><h2 id="6-3-服务器"><a href="#6-3-服务器" class="headerlink" title="6.3 服务器"></a>6.3 服务器</h2><ol>
+<li><p>高并发服务器建议调小 TCP 协议的 time_wait 超时时间（默认 240s）。</p>
+<blockquote>
+<p>正例：在 Linux 服务器上可通过变更 /etc/sysctl.conf 文件去修改该默认值。# net.ipv4.tcp_fin_timeout = 30</p>
+</blockquote>
+</li>
+<li><p>调大服务器所支持的最大文件句柄数（File Description，简称 fd）</p>
+</li>
+<li><p>推荐给 JVM 设置 -XX:+HeapDumpOnOutOfMemoryError 参数，让 JVM 碰到 OOM 场景时输出 dump 信息。</p>
+</li>
+<li><p>推荐在线上生产环境，JVM 的 Xms 和 Xmx 设置同一数值，避免在 GC 后调整堆大小带来的压力。</p>
+</li>
+<li><p>服务器内部重定向使用 forward；外部重定向地址使用 URL 拼装工具类来生成，否则会带来 URL 维护不一致的问题和潜在的安全风险。</p>
+</li>
+</ol>
+<h1 id="第-7-章-设计规约"><a href="#第-7-章-设计规约" class="headerlink" title="第 7 章 设计规约"></a>第 7 章 设计规约</h1><h1 id="附录-A-专有名词"><a href="#附录-A-专有名词" class="headerlink" title="附录 A 专有名词"></a>附录 A 专有名词</h1></div><div class="article-licensing box"><div class="licensing-title"><p>java开发手册</p><p><a href="https://teamwang.cn/2021/10/23/java开发手册/">https://teamwang.cn/2021/10/23/java开发手册/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Jacky</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-10-23</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-10-29</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/10/29/%E8%BF%88%E5%90%91%E9%AB%98%E7%BA%A7Java%E7%9A%84%E9%9D%A2%E8%AF%95%E7%AA%81%E5%9B%B4%E8%AF%BE/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">迈向高级Java的面试突围课</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/10/11/%E5%9C%A8m1-mac%E5%AE%89%E8%A3%85tensorflow/"><span class="level-item">在m1-mac安装tensorflow</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            appId: "D7nrmJ3xSHla6mxR3p0BrXqD-gzGzoHsz",
+            appKey: "rGXO6glIn8ETvzytN7maFaoP",
+            placeholder: "Leave your comments~",
+            
+            
+            meta: ["nick"],
+            pageSize: 10,
+            lang: "en",
+            visitor: true,
+            highlight: true,
+            
+            
+            
+            
+            enableQQ: true,
+            requiredFields: [],
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#第-1-章-编程规约"><span class="level-left"><span class="level-item">第 1 章 编程规约</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1-1-命名风格"><span class="level-left"><span class="level-item">1.1 命名风格</span></span></a></li><li><a class="level is-mobile" href="#1-2-常量定义"><span class="level-left"><span class="level-item">1.2 常量定义</span></span></a></li><li><a class="level is-mobile" href="#1-3-代码格式"><span class="level-left"><span class="level-item">1.3 代码格式</span></span></a></li><li><a class="level is-mobile" href="#1-4-OOP-规约"><span class="level-left"><span class="level-item">1.4 OOP 规约</span></span></a></li><li><a class="level is-mobile" href="#1-5-集合处理"><span class="level-left"><span class="level-item">1.5 集合处理</span></span></a></li><li><a class="level is-mobile" href="#1-6-并发处理"><span class="level-left"><span class="level-item">1.6 并发处理</span></span></a></li><li><a class="level is-mobile" href="#1-7-控制语句"><span class="level-left"><span class="level-item">1.7 控制语句</span></span></a></li><li><a class="level is-mobile" href="#1-8-注释规约"><span class="level-left"><span class="level-item">1.8 注释规约</span></span></a></li><li><a class="level is-mobile" href="#1-9-其他"><span class="level-left"><span class="level-item">1.9 其他</span></span></a></li></ul></li><li><a class="level is-mobile" href="#第-2-章-异常处理"><span class="level-left"><span class="level-item">第 2 章 异常处理</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#2-1-异常处理"><span class="level-left"><span class="level-item">2.1 异常处理</span></span></a></li><li><a class="level is-mobile" href="#2-2-日志规约"><span class="level-left"><span class="level-item">2.2 日志规约</span></span></a></li></ul></li><li><a class="level is-mobile" href="#第-3-章-单元测试"><span class="level-left"><span class="level-item">第 3 章 单元测试</span></span></a></li><li><a class="level is-mobile" href="#第-4-章-安全规约"><span class="level-left"><span class="level-item">第 4 章 安全规约</span></span></a></li><li><a class="level is-mobile" href="#第-5-章-MySQL-数据库"><span class="level-left"><span class="level-item">第 5 章 MySQL 数据库</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#5-1-建表规约"><span class="level-left"><span class="level-item">5.1 建表规约</span></span></a></li><li><a class="level is-mobile" href="#5-2-索引规约"><span class="level-left"><span class="level-item">5.2 索引规约</span></span></a></li><li><a class="level is-mobile" href="#5-3-SQL-语句"><span class="level-left"><span class="level-item">5.3 SQL 语句</span></span></a></li><li><a class="level is-mobile" href="#5-4-ORM-映射"><span class="level-left"><span class="level-item">5.4 ORM 映射</span></span></a></li></ul></li><li><a class="level is-mobile" href="#第-6-章-工程结构"><span class="level-left"><span class="level-item">第 6 章 工程结构</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#6-1-应用分层"><span class="level-left"><span class="level-item">6.1 应用分层</span></span></a></li><li><a class="level is-mobile" href="#6-2-二方库依赖"><span class="level-left"><span class="level-item">6.2 二方库依赖</span></span></a></li><li><a class="level is-mobile" href="#6-3-服务器"><span class="level-left"><span class="level-item">6.3 服务器</span></span></a></li></ul></li><li><a class="level is-mobile" href="#第-7-章-设计规约"><span class="level-left"><span class="level-item">第 7 章 设计规约</span></span></a></li><li><a class="level is-mobile" href="#附录-A-专有名词"><span class="level-left"><span class="level-item">附录 A 专有名词</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Jacky"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Jacky</p><p class="is-size-6 is-block">(ง ˙o˙)ว</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">28</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">7</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">1</p></a></div></div></nav><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Weibo" href="https://weibo.com/"><i class="fab fa-weibo"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/cloris-cc"><i class="fab fa-github"></i></a></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><p class="is-size-7"><span>&copy; 2021 Jacky</span>  <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备19098392号</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Weibo" href="https://weibo.com/"><i class="fab fa-weibo"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/cloris-cc"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
