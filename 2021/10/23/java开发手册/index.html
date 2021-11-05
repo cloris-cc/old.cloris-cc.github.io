@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>java开发手册 - 茶茶日记 - winklog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="茶茶日记 - winklog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="茶茶日记 - winklog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="…"><meta property="og:type" content="blog"><meta property="og:title" content="java开发手册"><meta property="og:url" content="https://teamwang.cn/2021/10/23/java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/"><meta property="og:site_name" content="茶茶日记 - winklog"><meta property="og:description" content="…"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://teamwang.cn/img/og_image.png"><meta property="article:published_time" content="2021-10-23T09:49:37.000Z"><meta property="article:modified_time" content="2021-10-29T08:12:20.683Z"><meta property="article:author" content="Jacky"><meta property="article:tag" content="茶茶,日记,茶茶日记,winklog,WinkLog,博客,teamwang,TeamWang,王嘉尔,Jakcy,jacky"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamwang.cn/2021/10/23/java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/"},"headline":"java开发手册","image":["https://teamwang.cn/img/og_image.png"],"datePublished":"2021-10-23T09:49:37.000Z","dateModified":"2021-10-29T08:12:20.683Z","author":{"@type":"Person","name":"Jacky"},"description":"…"}</script><link rel="canonical" href="https://teamwang.cn/2021/10/23/java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>java开发手册 - 茶茶日记 - winklog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="茶茶日记 - winklog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="茶茶日记 - winklog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="…"><meta property="og:type" content="blog"><meta property="og:title" content="java开发手册"><meta property="og:url" content="https://teamwang.cn/2021/10/23/java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/"><meta property="og:site_name" content="茶茶日记 - winklog"><meta property="og:description" content="…"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://teamwang.cn/img/og_image.png"><meta property="article:published_time" content="2021-10-23T09:49:37.000Z"><meta property="article:modified_time" content="2021-11-05T06:11:59.163Z"><meta property="article:author" content="Jacky"><meta property="article:tag" content="茶茶,日记,茶茶日记,winklog,WinkLog,博客,teamwang,TeamWang,王嘉尔,Jakcy,jacky"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamwang.cn/2021/10/23/java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/"},"headline":"java开发手册","image":["https://teamwang.cn/img/og_image.png"],"datePublished":"2021-10-23T09:49:37.000Z","dateModified":"2021-11-05T06:11:59.163Z","author":{"@type":"Person","name":"Jacky"},"description":"…"}</script><link rel="canonical" href="https://teamwang.cn/2021/10/23/java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
         (function() {
             var hm = document.createElement("script");
             hm.src = "//hm.baidu.com/hm.js?05af3f3bd18ffe652b63cc7ee6abb48c";
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
-        })();</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="茶茶日记 - winklog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时光轴</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-10-23T09:49:37.000Z" title="10/23/2021, 5:49:37 PM">2021-10-23</time>发表</span><span class="level-item"><time dateTime="2021-10-29T08:12:20.683Z" title="10/29/2021, 4:12:20 PM">2021-10-29</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a></span><span class="level-item">24 分钟读完 (大约3617个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">java开发手册</h1><div class="content"><p>…</p>
+        })();</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="茶茶日记 - winklog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时光轴</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-10-23T09:49:37.000Z" title="10/23/2021, 5:49:37 PM">2021-10-23</time>发表</span><span class="level-item"><time dateTime="2021-11-05T06:11:59.163Z" title="11/5/2021, 2:11:59 PM">2021-11-05</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a></span><span class="level-item">24 分钟读完 (大约3630个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">java开发手册</h1><div class="content"><p>…</p>
 <span id="more"></span>
 
 <h1 id="第-1-章-编程规约"><a href="#第-1-章-编程规约" class="headerlink" title="第 1 章 编程规约"></a>第 1 章 编程规约</h1><h2 id="1-1-命名风格"><a href="#1-1-命名风格" class="headerlink" title="1.1 命名风格"></a>1.1 命名风格</h2><ol>
@@ -14,7 +14,7 @@
 <p>反例：如 Boolean isDeleted RPC 框架反向解析的时候，会识别为 deleted，导致属性获取不到抛出异常。</p>
 </blockquote>
 </li>
-<li><p>接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码简洁，并加上有效的 Javadoc 注释。尽量不要在接口中定义变量，除非是常量。</p>
+<li><p>接口类中的方法和属性<strong>不要加任何修饰符号</strong>（public 也不要加），保持代码简洁，并加上有效的 Javadoc 注释。尽量不要在接口中定义变量，除非是常量。</p>
 <blockquote>
 <p>正例：方法签名：<code>void commit()</code> 基础常量：<code>String COMPANY = &quot;alibaba&quot;</code></p>
 </blockquote>
@@ -58,16 +58,16 @@
 <p>正例：<code>&quot;test&quot;.equals(object);</code><br>反例：<code>object.equals(&quot;test&quot;);</code></p>
 </blockquote>
 </li>
-<li><p>所有<strong>相同类型</strong>的包装类对象之间 value 的比较，全部使用 equals 方法。但是要注意 Integer var = ？在 -128 ~ 127 范围内的赋值是同一个对象（取自 IntegerCache.cache ），所以可以直接使用 == 进行判断。但是推荐使用 equals 方法。</p>
+<li><p>所有<strong>相同类型</strong>的包装类对象之间 value 的比较，全部使用 equals 方法。但是要注意 Integer var = ？在 <strong>-128 ~ 127 范围内的赋值是同一个对象</strong>（取自 IntegerCache.cache ），所以可以直接使用 == 进行判断。但是推荐使用 equals 方法。</p>
 </li>
 <li><p>所有 POJO 的属性必须使用<strong>包装数据类型</strong>。POJO 类属性没有初始值，是要提醒使用者在需要使用时，必须自己显式地赋值，任何 NPE 问题，或者入库检查，都由使用者来保证。</p>
 <blockquote>
-<p>正例：数据库的查询结果可能是 null，因为自动拆箱，所以用基本数据类型接收都有 NPE 风险。</p>
+<p>正例：数据库的查询结果可能是 null，因为自动拆箱，所以用基本数据类型接收都有 NPE 风险。即对象的field，如<code>int age</code>应改为<code>Integer age</code>。</p>
 </blockquote>
 </li>
 <li><p>POJO 必须写 toString 方法。</p>
 </li>
-<li><p>在循环体内，字符串的连接方式使用 StringBuilder 的 append 方法。用 String 拼接会产生很多个新的对象，造成内存资源浪费。</p>
+<li><p>在循环体内，字符串的连接方式使用 StringBuilder 的 append 方法。<strong>用 String 拼接会产生很多个新的对象，造成内存资源浪费。</strong></p>
 </li>
 <li><p>工具类不允许有 public 或 defaul 构造方法。因为工具类一般只需要一个对象，写 method 指定为 static 即可。</p>
 </li>
@@ -75,7 +75,7 @@
 <h2 id="1-5-集合处理"><a href="#1-5-集合处理" class="headerlink" title="1.5 集合处理"></a>1.5 集合处理</h2><ol>
 <li><p>在使用工具类 Arrays.asList() 把数组转换成集合后，不能使用修改集合相关的方法，如 add / remove / clear 的集合方法，否则会抛出 UnsupportOperationException 异常。因为 asList 的返回对象是一个 Arrays 内部类，并没有实现集合的修改方法。Arrays.asList 体现的是<strong>适配器模式</strong>，只是转换接口，后台的数据实际上还是数组。</p>
 </li>
-<li><p>不要再 foreach 循环里进行元素的 remove / add 操作。remove 元素使用 Iterator 方式，如果是并发操作，需要对 Iterator 对象加锁。</p>
+<li><p>不要再 foreach 循环里进行元素的 remove / add 操作。remove 元素使用 <strong>Iterator</strong> 方式，如果是并发操作，需要对 Iterator 对象加锁。</p>
 <blockquote>
 <p>正例：</p>
  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;String&gt; iterator = list.iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">    String item = iterator.next();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -104,16 +104,16 @@
 </li>
 <li><p>HashMap 在容量不够进行 resize 时，由于高并发可能出现死锁，导致 CPU 占用飙升，在开发过程中可以使用其他数据结构或加锁来规避此风险。</p>
 </li>
-<li><p>ThreadLocal 无法解决共享对象的更新问题， ThreadLocal 对象建议使用 static 修饰。</p>
+<li><p>ThreadLocal 无法解决共享对象的更新问题， <strong>ThreadLocal 对象建议使用 static 修饰。</strong></p>
 </li>
 </ol>
 <h2 id="1-7-控制语句"><a href="#1-7-控制语句" class="headerlink" title="1.7 控制语句"></a>1.7 控制语句</h2><ol>
-<li><p>在高并发场景中，避免使用 “==” 判断作为中断或退出的条件（if 语句不可信，== 条件不可取）。</p>
+<li><p>在高并发场景中，避免使用 “==” 判断作为中断或退出的条件（if 语句不可信，条件不可取）。</p>
 <blockquote>
 <p>说明：如果并发控制没有处理好，容易产生等值判断被“击穿”的情况，应使用<strong>大于或小于</strong>的区间<strong>判断条件</strong>来代替。<br>反例：判断库存等于 0 时，停止出售。但可能因为并发问题导致库存数量小于 0 而无法停止出售。</p>
 </blockquote>
 </li>
-<li><p>在表达异常的分支时，尽量少用 if-else。可以改写成多个 if 语句。</p>
+<li><p>在表达异常的分支时，<strong>尽量少用 if-else</strong>，可改成多个 if 语句。</p>
 </li>
 <li><p>不要在 if 条件语句中执行其它复杂的语句。可以将复杂的逻辑判断结果赋值给一个 boolean 变量（<strong>局部变量使用基本数据类型</strong>）。</p>
 </li>
@@ -191,14 +191,14 @@
 <h2 id="5-2-索引规约"><a href="#5-2-索引规约" class="headerlink" title="5.2 索引规约"></a>5.2 索引规约</h2><ol>
 <li><p>业务上具有唯一特性的字段，即使是多个字段的组合，也必须建成唯一索引。</p>
 </li>
-<li><p>页面搜索禁止使用左模糊或者全模糊搜索，若需要则通过搜索引擎解决。因为索引未见具有 <strong>B-Tree</strong> 的最左前缀匹配特性，如果<strong>左边的值未确定，那么就无法使用索引</strong>了。</p>
+<li><p>页面搜索<strong>禁止使用左模糊或者全模糊</strong>搜索，若需要则通过搜索引擎解决。因为索引未见具有 <strong>B-Tree</strong> 的最左前缀匹配特性，如果<strong>左边的值未确定，那么就无法使用索引</strong>了。</p>
 </li>
 <li><p>注意 order by 的场景。</p>
 <blockquote>
 <p>正例：where a = ? and b = ? order by c = ?; 索引是 a_b_c<br>反例：索引中有范围查找，那么索引有序性无法利用，如 where a &gt; 10 order by b; 索引 a_b 无法排序。</p>
 </blockquote>
 </li>
-<li><p>利用延迟关联或子查询优化超多分页场景。</p>
+<li><p>利用<strong>延迟关联</strong>或<strong>子查询</strong>优化超多分页场景。</p>
 <blockquote>
 <p>说明：MySQL 并不是跳过 offset 行，而是取 offset + N 行（全部），然后放弃前 offset 行，返回 N 行。所以当 offset 特别大的时候效率就会非常低。要么控制返回的总页数，要么对特定超过阈值的页数进行 SQL 改写。<br>正例：先快速定位需要获取的 id 段，然后再关联：</p>
  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.字段 <span class="keyword">from</span> 表 <span class="number">1</span> a, (<span class="keyword">select</span> id <span class="keyword">from</span> 表 <span class="number">1</span> <span class="keyword">where</span> 条件 limit <span class="number">100000</span>, <span class="number">20</span>) b <span class="keyword">where</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
@@ -239,7 +239,7 @@
 <li><p>服务器内部重定向使用 forward；外部重定向地址使用 URL 拼装工具类来生成，否则会带来 URL 维护不一致的问题和潜在的安全风险。</p>
 </li>
 </ol>
-<h1 id="第-7-章-设计规约"><a href="#第-7-章-设计规约" class="headerlink" title="第 7 章 设计规约"></a>第 7 章 设计规约</h1><h1 id="附录-A-专有名词"><a href="#附录-A-专有名词" class="headerlink" title="附录 A 专有名词"></a>附录 A 专有名词</h1></div><div class="article-licensing box"><div class="licensing-title"><p>java开发手册</p><p><a href="https://teamwang.cn/2021/10/23/java开发手册/">https://teamwang.cn/2021/10/23/java开发手册/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Jacky</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-10-23</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-10-29</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/10/29/%E8%BF%88%E5%90%91%E9%AB%98%E7%BA%A7Java%E7%9A%84%E9%9D%A2%E8%AF%95%E7%AA%81%E5%9B%B4%E8%AF%BE/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">迈向高级Java的面试突围课</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/10/11/%E5%9C%A8m1-mac%E5%AE%89%E8%A3%85tensorflow/"><span class="level-item">在m1-mac安装tensorflow</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script>new Valine({
+<h1 id="第-7-章-设计规约"><a href="#第-7-章-设计规约" class="headerlink" title="第 7 章 设计规约"></a>第 7 章 设计规约</h1><h1 id="附录-A-专有名词"><a href="#附录-A-专有名词" class="headerlink" title="附录 A 专有名词"></a>附录 A 专有名词</h1></div><div class="article-licensing box"><div class="licensing-title"><p>java开发手册</p><p><a href="https://teamwang.cn/2021/10/23/java开发手册/">https://teamwang.cn/2021/10/23/java开发手册/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Jacky</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-10-23</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-11-05</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/10/29/%E8%BF%88%E5%90%91%E9%AB%98%E7%BA%A7Java%E7%9A%84%E9%9D%A2%E8%AF%95%E7%AA%81%E5%9B%B4%E8%AF%BE/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">迈向高级Java的面试突围课</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/10/11/%E5%9C%A8m1-mac%E5%AE%89%E8%A3%85tensorflow/"><span class="level-item">在m1-mac安装tensorflow</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script>new Valine({
             el: '#valine-thread' ,
             appId: "D7nrmJ3xSHla6mxR3p0BrXqD-gzGzoHsz",
             appKey: "rGXO6glIn8ETvzytN7maFaoP",
