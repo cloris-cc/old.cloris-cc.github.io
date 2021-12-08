@@ -1,18 +1,19 @@
 <!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Java虚拟机 (JVM) - 茶茶日记 - winklog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="茶茶日记 - winklog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="茶茶日记 - winklog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Java 虚拟机知识点，总结自《深入理解Java虚拟机》"><meta property="og:type" content="blog"><meta property="og:title" content="Java虚拟机 (JVM)"><meta property="og:url" content="https://teamwang.cn/2021/03/02/JVM/"><meta property="og:site_name" content="茶茶日记 - winklog"><meta property="og:description" content="Java 虚拟机知识点，总结自《深入理解Java虚拟机》"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/e9d672fff04da8c4-20211105143645529.jpeg"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/3d0974c5071c162d.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/T78Eah.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/8HW45I.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/7txkmK.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/ywaR8F.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/FcHyqE.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/UgKDNr.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/AY0KKc.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/452f3fa5c0066909.jpg"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/2df96e255f0e5e20.jpg"><meta property="og:image" content="https://uploader.shimo.im/f/AzbbP2cLFbDua1U7.png!thumbnail"><meta property="og:image" content="https://uploader.shimo.im/f/2ZuNZudQvF5F4ckN.png"><meta property="og:image" content="https://uploader.shimo.im/f/3hkjwRj7hr4qeTTq.png!thumbnail"><meta property="article:published_time" content="2021-03-01T20:23:54.000Z"><meta property="article:modified_time" content="2021-11-05T16:30:43.800Z"><meta property="article:author" content="Jacky"><meta property="article:tag" content="茶茶,日记,茶茶日记,winklog,WinkLog,博客,teamwang,TeamWang,王嘉尔,Jakcy,jacky"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/e9d672fff04da8c4-20211105143645529.jpeg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamwang.cn/2021/03/02/JVM/"},"headline":"Java虚拟机 (JVM)","image":["https://gitee.com/jacky_cloud/oss/raw/master/uPic/3d0974c5071c162d.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/T78Eah.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/8HW45I.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/7txkmK.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/ywaR8F.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/FcHyqE.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/UgKDNr.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/AY0KKc.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/452f3fa5c0066909.jpg","https://gitee.com/jacky_cloud/oss/raw/master/uPic/2df96e255f0e5e20.jpg","https://uploader.shimo.im/f/2ZuNZudQvF5F4ckN.png"],"datePublished":"2021-03-01T20:23:54.000Z","dateModified":"2021-11-05T16:30:43.800Z","author":{"@type":"Person","name":"Jacky"},"description":"Java 虚拟机知识点，总结自《深入理解Java虚拟机》"}</script><link rel="canonical" href="https://teamwang.cn/2021/03/02/JVM/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Java虚拟机 (JVM) - 茶茶日记 - winklog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="茶茶日记 - winklog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="茶茶日记 - winklog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Java 虚拟机知识点，总结自《深入理解Java虚拟机》"><meta property="og:type" content="blog"><meta property="og:title" content="Java虚拟机 (JVM)"><meta property="og:url" content="https://teamwang.cn/2021/03/02/JVM/"><meta property="og:site_name" content="茶茶日记 - winklog"><meta property="og:description" content="Java 虚拟机知识点，总结自《深入理解Java虚拟机》"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/e9d672fff04da8c4-20211105143645529.jpeg"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/3d0974c5071c162d.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/T78Eah.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/8HW45I.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/7txkmK.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/ywaR8F.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/FcHyqE.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/UgKDNr.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/AY0KKc.png"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/452f3fa5c0066909.jpg"><meta property="og:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/2df96e255f0e5e20.jpg"><meta property="og:image" content="https://uploader.shimo.im/f/AzbbP2cLFbDua1U7.png!thumbnail"><meta property="og:image" content="https://uploader.shimo.im/f/2ZuNZudQvF5F4ckN.png"><meta property="og:image" content="https://uploader.shimo.im/f/3hkjwRj7hr4qeTTq.png!thumbnail"><meta property="article:published_time" content="2021-03-01T20:23:54.000Z"><meta property="article:modified_time" content="2021-12-02T01:38:28.311Z"><meta property="article:author" content="Jacky"><meta property="article:tag" content="茶茶,日记,茶茶日记,winklog,WinkLog,博客,teamwang,TeamWang,王嘉尔,Jakcy,jacky"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://gitee.com/jacky_cloud/oss/raw/master/uPic/e9d672fff04da8c4-20211105143645529.jpeg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamwang.cn/2021/03/02/JVM/"},"headline":"Java虚拟机 (JVM)","image":["https://gitee.com/jacky_cloud/oss/raw/master/uPic/3d0974c5071c162d.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/T78Eah.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/8HW45I.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/7txkmK.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/ywaR8F.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/FcHyqE.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/UgKDNr.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/AY0KKc.png","https://gitee.com/jacky_cloud/oss/raw/master/uPic/452f3fa5c0066909.jpg","https://gitee.com/jacky_cloud/oss/raw/master/uPic/2df96e255f0e5e20.jpg","https://uploader.shimo.im/f/2ZuNZudQvF5F4ckN.png"],"datePublished":"2021-03-01T20:23:54.000Z","dateModified":"2021-12-02T01:38:28.311Z","author":{"@type":"Person","name":"Jacky"},"description":"Java 虚拟机知识点，总结自《深入理解Java虚拟机》"}</script><link rel="canonical" href="https://teamwang.cn/2021/03/02/JVM/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
         (function() {
             var hm = document.createElement("script");
             hm.src = "//hm.baidu.com/hm.js?05af3f3bd18ffe652b63cc7ee6abb48c";
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
-        })();</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="茶茶日记 - winklog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时光轴</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-03-01T20:23:54.000Z" title="3/2/2021, 4:23:54 AM">2021-03-02</time>发表</span><span class="level-item"><time dateTime="2021-11-05T16:30:43.800Z" title="11/6/2021, 12:30:43 AM">2021-11-06</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a></span><span class="level-item">1 小时读完 (大约10784个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">Java虚拟机 (JVM)</h1><div class="content"><p>Java 虚拟机知识点，总结自《深入理解Java虚拟机》</p>
+        })();</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="茶茶日记 - winklog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时光轴</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-03-01T20:23:54.000Z" title="3/2/2021, 4:23:54 AM">2021-03-02</time>发表</span><span class="level-item"><time dateTime="2021-12-02T01:38:28.311Z" title="12/2/2021, 9:38:28 AM">2021-12-02</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a></span><span class="level-item">1 小时读完 (大约11072个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">Java虚拟机 (JVM)</h1><div class="content"><p>Java 虚拟机知识点，总结自《深入理解Java虚拟机》</p>
 <span id="more"></span>
 
 <h1 id="1-JVM-结构"><a href="#1-JVM-结构" class="headerlink" title="1. JVM 结构"></a>1. JVM 结构</h1><p><strong>分为 4 部分：堆 + 栈 + 程序计数器 + 方法区/永久代(MetaSpace1.8)**。其中</strong>栈和程序计数器为线程私有**。</p>
 <img src="https://gitee.com/jacky_cloud/oss/raw/master/uPic/e9d672fff04da8c4-20211105143645529.jpeg" style="zoom: 50%;" />
 
-
-
+<p>我的理解，就是实例变量（也就是成员变量）的生命周期是跟随对象的。而对象实例化之后，存放在堆中，所有成员变量也会存在堆中。</p>
+<p>而类中的其他变量，如静态变量（也叫类变量）是存放在方法区中的。</p>
+<p>局部变量是属于方法的，也就存在栈中。</p>
 <blockquote>
 <p>A. <strong>程序计数器</strong></p>
 </blockquote>
@@ -21,14 +22,14 @@
 <li>唯一一处<strong>不会出现 OOM 异常</strong></li>
 </ul>
 <blockquote>
-<p>B. <strong>虚拟机栈</strong></p>
+<p>B1. <strong>虚拟机栈</strong></p>
 </blockquote>
 <ul>
 <li><p>-Xss：设置栈大小</p>
 </li>
 <li><p>方法执行的时候创建<strong>栈帧</strong>(stack frame)，方法的调用其实就是<strong>栈帧</strong>出栈和入栈的过程</p>
 </li>
-<li><p>栈帧：如局部变量表等</p>
+<li><p>栈帧：如<strong>局部变量</strong>表等</p>
 <ul>
 <li>宽度：栈帧内存大小</li>
 <li>虚拟机栈的深度：栈帧的数量</li>
@@ -36,7 +37,7 @@
 </li>
 </ul>
 <blockquote>
-<p>B. <strong>本地方法栈</strong></p>
+<p>B2. <strong>本地方法栈</strong></p>
 </blockquote>
 <ul>
 <li>调用的方法是本地(native)方法的接口，也就是C/C++程序</li>
@@ -52,8 +53,8 @@
 <p>D. <strong>方法区(永久代) / MetaSpace jdk1.8</strong></p>
 </blockquote>
 <ul>
-<li><p>存储已经被JVM加载的类信息、<strong>常量 + static 变量</strong>、JIT(Just In Time)编译后的代码等数据（就是，占用空间小的数据）。</p>
-<p>jdk1.7开始，字符串放到了堆中。</p>
+<li><p>存储已经被JVM加载的类信息、<del><strong>常量 + static 变量</strong></del>、JIT(Just In Time)编译后的代码等数据（就是，占用空间小的数据）。</p>
+<p>jdk1.7开始，<strong>字符串</strong>、<strong>static 静态变量</strong>放到了堆中。<strong>方法区改为元空间，仅保存常量。</strong></p>
 </li>
 </ul>
 <h1 id="2-Thread-和-JVM-的关系"><a href="#2-Thread-和-JVM-的关系" class="headerlink" title="2. Thread 和 JVM 的关系"></a>2. Thread 和 JVM 的关系</h1><p>Java进程的内存大小(计算机内存为固定值) = *<em>堆内存 + 线程数量 * 栈内存*</em>，因为堆是线程共享，栈是线程私有的。</p>
@@ -95,7 +96,12 @@
 <p><strong>如何定位内存泄漏代码？</strong></p>
 <p>通过工具查看泄漏对象到 <strong>GC Root</strong> 的引用链，就可以定位世漏代码的位置</p>
 <p><strong>GC Root 对象有哪些？</strong></p>
-<p>虚拟机栈(栈帧中的本地变量表)引用的对象、本地方法栈 JNI (Java Native Interface) 引用的对象、方法区中的 static 变量和常量引用的对象。（栈+方法区）</p>
+<blockquote>
+<p>栈+方法区 引用的对象</p>
+</blockquote>
+<p>虚拟机栈(栈帧中的本地变量表)引用的对象、</p>
+<p>本地方法栈 JNI (Java Native Interface) 引用的对象、</p>
+<p>方法区中的 static 变量和常量引用的对象。</p>
 <h2 id="4-2-触发-GC-的条件"><a href="#4-2-触发-GC-的条件" class="headerlink" title="4.2 触发 GC 的条件"></a>4.2 触发 GC 的条件</h2><h3 id="Minor-GC"><a href="#Minor-GC" class="headerlink" title="Minor GC"></a>Minor GC</h3><p>当 Head/YoungGen/// Eden 区满时触发</p>
 <h3 id="Full-Major-GC"><a href="#Full-Major-GC" class="headerlink" title="Full/Major GC"></a>Full/Major GC</h3><ol>
 <li>调用 System.gc() 方法 (不一定马上执行，和线程的原理一样)</li>
@@ -130,11 +136,11 @@
 </blockquote>
 <p>串行收集器采用<strong>单线程 STW</strong>(stop-the-world) 的方式进行收集</p>
 <h3 id="并行回收器组合"><a href="#并行回收器组合" class="headerlink" title="并行回收器组合"></a>并行回收器组合</h3><blockquote>
-<p><strong>Parallel Scavenge + Parallel Old</strong>，开启选项：-XX:+UseParallelGC 或 -XX:+UseParallelOldGC (可互相激活)</p>
+<p><strong>Parallel Scavenge + Parallel Old</strong>，<strong>JDK8 默认配置</strong>，开启选项：-XX:+UseParallelGC 或 -XX:+UseParallelOldGC (可互相激活)</p>
 </blockquote>
 <p>并行收集器与串行收集器工作模式相似，都是stop-the-world方式，只是暂停时并行地进行垃圾收集</p>
 <h3 id="并发标记清除回收器组合"><a href="#并发标记清除回收器组合" class="headerlink" title="并发标记清除回收器组合"></a>并发标记清除回收器组合</h3><blockquote>
-<p><strong>ParNew + CMS + Serial Old</strong>，JDK8 默认配置，开启选项：-XX:+UseConcMarkSweepGC</p>
+<p><strong>ParNew +// CMS + Serial Old</strong>，<del>JDK8 默认配置</del>，开启选项：-XX:+UseConcMarkSweepGC</p>
 <p>concurrent 不等于 parallel</p>
 </blockquote>
 <p>并发标记清除(CMS)是以关注延迟为目标、十分优秀的垃圾回收算法，开启后，年轻代使用STW式的并行收集，老年代回收采用CMS进行垃圾回收，对延迟的关注也主要体现在老年代CMS上。</p>
@@ -163,6 +169,16 @@
 <li>基于“分代收集算法”，其实就是 YoungGen 使用复制算法；OldGen 使用标记-整理算法，<strong>不会产生内存碎片</strong>。</li>
 <li>G1的设计原则是”<strong>优先回收最多垃圾的一块区域(Garbage - First)</strong>“。G1 将内存划分一个个固定大小的 region 区域，region 可以位于年轻代或老年代。内存的回收是以 region 作为基本单位的，G1不会等内存耗尽(串行、并行)或者快耗尽(CMS)的时候开始垃圾收集，而是在内部采用了启发式算法，找出具有高收集收益的 Region 区域进行收集。</li>
 </ol>
+<p>在某些场景下G1的TPS可能没CMS高，即 gc 次数频繁，但单次停顿时间极低。因此<strong>用户感知</strong>更弱了。</p>
+<p>什么情况下应该考虑使用 G1 ？参考官方文档：</p>
+<ul>
+<li>实时数据占用超过<strong>一半的堆空间</strong>（说明该应用程序”较大”）</li>
+<li>对象分配或者晋升的速度变化大</li>
+<li>希望消除长时间的GC停顿（超过0.5-1秒）</li>
+</ul>
+<blockquote>
+<p>总结：总的来说，垃圾回收总时间减少， 每次GC平均的STW(延迟)时间降低。</p>
+</blockquote>
 <h2 id="4-5-GC-日志"><a href="#4-5-GC-日志" class="headerlink" title="4.5 GC 日志"></a>4.5 GC 日志</h2><img src="https://gitee.com/jacky_cloud/oss/raw/master/uPic/ywaR8F.png" alt="ywaR8F" style="zoom:50%;" />
 
 <p>日志首行的GC指的是YoungGen发生的 Minor GC，而FullGC是有停顿的STW的GC。</p>
@@ -471,7 +487,7 @@
 </li>
 </ul>
 <p>解释一下目前在免费许可证下可以商用，其次就是Spring也官宣了，明年发布的Spring framework 6 和Spring Boot 3 都将基于JAVA 17，大家还要坚守Java8吗？</p>
-</div><div class="article-licensing box"><div class="licensing-title"><p>Java虚拟机 (JVM)</p><p><a href="https://teamwang.cn/2021/03/02/JVM/">https://teamwang.cn/2021/03/02/JVM/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Jacky</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-03-02</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-11-06</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/03/04/SpringCloud/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Spring Cloud</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/03/01/Concurrency%E5%B9%B6%E5%8F%91/"><span class="level-item">Java并发编程</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script>new Valine({
+</div><div class="article-licensing box"><div class="licensing-title"><p>Java虚拟机 (JVM)</p><p><a href="https://teamwang.cn/2021/03/02/JVM/">https://teamwang.cn/2021/03/02/JVM/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Jacky</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-03-02</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-12-02</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/03/04/SpringCloud/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Spring Cloud</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/03/01/Concurrency%E5%B9%B6%E5%8F%91/"><span class="level-item">Java并发编程</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script>new Valine({
             el: '#valine-thread' ,
             appId: "D7nrmJ3xSHla6mxR3p0BrXqD-gzGzoHsz",
             appKey: "rGXO6glIn8ETvzytN7maFaoP",
